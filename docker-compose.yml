@@ -1,0 +1,23 @@
+version: '3'
+services:
+  courses-ervice:
+    build:
+      context: ./courseService
+    ports:
+      - "8080:8080"
+    environment:
+      SPRING_PROFILES_ACTIVE: "dev"
+    networks:
+      - my-network
+  student-service:
+    build:
+      context: ./studentService
+    ports:
+      - "8282:8282"
+    environment:
+      SPRING_PROFILES_ACTIVE: "dev"
+    networks:
+      - my-network
+networks:
+  my-network:
+    driver: bridge
